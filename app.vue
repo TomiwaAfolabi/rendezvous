@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <NavBar />
+    <WebNavBar />
     <NuxtPage />
     <WebFooter />
   </div>
@@ -12,11 +12,12 @@ export default {};
 
 <style lang="scss" scoped>
 @import url("https://fonts.cdnfonts.com/css/gilroy-bold");
+
 .body {
+  width: auto;
   max-width: 1440px;
-  margin: auto;
-  width: 100vw;
   height: 100vh;
+  margin: auto;
   font-family: "Gilroy-Bold", sans-serif;
 }
 </style>

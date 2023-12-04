@@ -1,0 +1,43 @@
+.event_card {
+  max-width: 421px;
+  height: 488px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  overflow: auto;
+
+  .card_content {
+    padding: 15px;
+    height: 200px;
+    overflow-y: scroll;
+    h3 {
+      font-size: 16px;
+      margin: 0px;
+    }
+    span {
+      height: 4px;
+      width: 4px;
+      background-color: black;
+      border-radius: 50%;
+      display: inline-flex;
+      flex-wrap: wrap;
+      margin: 0px 5px 0px 5px;
+    }
+    p {
+      font-size: 14px;
+      margin: 5px 0px 25px 0px;
+    }
+    a {
+      color: #432361;
+      cursor: pointer;
+    }
+  }
+
+  cursor: pointer;
+
+  img {
+    object-fit: cover;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+}
