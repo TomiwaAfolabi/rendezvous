@@ -1,34 +1,25 @@
 <template>
-  <div>
-    <header class="container">
+  <div class="nav_main_container">
+    <header class="nav_container">
       <img src="~/assets/img/rendevous.svg" alt="logo" />
       <nav>
-        <ul>
-          <li>
-            <NuxtLink><p>Discover</p></NuxtLink>
-          </li>
-          <li>
-            <NuxtLink><p>About Us</p></NuxtLink>
-          </li>
-          <li>
-            <NuxtLink><p>FAQs</p></NuxtLink>
-          </li>
-          <li>
-            <NuxtLink><p>Contact Us</p></NuxtLink>
-          </li>
+        <ul v-for="(link, index) in links" :key="index">
+          <NuxtLink
+            ><li>{{ link }}</li></NuxtLink
+          >
         </ul>
       </nav>
+      <div class="buttons">
+        <NuxtLink class="btn">Log In</NuxtLink>
+        <NuxtLink class="btn">Sign Up</NuxtLink>
+      </div>
     </header>
   </div>
 </template>
 
-<script>
+<script setup>
 import "./style.scss";
-export default {
-  setup() {
-    return {};
-  },
-};
+const links = reactive(["Discover", "About Us", "FAQs", "Contact Us"]);
 </script>
 
 <style lang="scss" scoped></style>
