@@ -1,0 +1,110 @@
+.events_details_container {
+  width: 100%;
+  height: 100vh;
+  overflow: scroll;
+  padding-top: 100px;
+
+  .event_img {
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 0px 15px 0px 15px;
+
+    img {
+      width: 100%;
+      max-width: 1311px;
+      height: 480px;
+      object-fit: cover;
+      border-radius: 10px;
+
+      @media screen and (max-width: 770px) {
+        max-width: 655.5px;
+        height: 240px;
+      }
+    }
+  }
+
+  .event_details {
+    display: flex;
+
+    .first_section {
+      padding: 60px 60px 90px 60px;
+      max-width: 875px;
+
+      .__event_details h3 {
+        font-family: "Gilroy-Bold";
+      }
+
+      .__event_details div {
+        max-width: 681px;
+        display: flex;
+        flex-wrap: wrap;
+
+        p {
+          font-family: "Gilroy-Regular";
+          margin: 5px;
+          .icon {
+            margin-top: -5px;
+          }
+        }
+
+        p:nth-child(1) {
+          padding-right: 15px;
+        }
+      }
+      .__event_description {
+        p {
+          font-family: "Gilroy-Regular";
+        }
+      }
+      .__event_ticket {
+        margin-bottom: 25px;
+        .pricing {
+          display: flex;
+          gap: 40px;
+          p {
+            line-height: 25px;
+            margin: 0;
+          }
+          #price {
+            color: #9b51e0;
+          }
+        }
+      }
+      .buy_btn button {
+        max-width: 154px;
+        height: 100%;
+        color: #ffffff;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        background-color: #783ead;
+        padding: 12px 24px 12px 24px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+    }
+    .second_section {
+      display: flex;
+      padding: 60px;
+
+      .contact_organizers {
+        width: 100%;
+        .social_media {
+          display: flex;
+          gap: 10px;
+          img {
+            cursor: pointer;
+          }
+          svg {
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
