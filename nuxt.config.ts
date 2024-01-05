@@ -4,8 +4,8 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
   devtools: { enabled: true },
   runtimeConfig:{
-    googleMapKey: process.env.GOOGLE_MAPS_API_KEY || process.env.GMapID
-    
+    googleMapKey: process.env.GOOGLE_MAPS_API_KEY 
+
   }
 
 })
