@@ -21,19 +21,19 @@
                 @click="toggleCategory()"
               />
             </div>
-
-            <div class="dropdown" v-if="categoryDP">
-              <div
-                v-for="(category, index) in categories"
-                :key="index"
-                class="items"
-              >
-                <p class="item">{{ category }}</p>
-              </div>
-            </div>
           </div>
+
           <div class="search_btn">
             <button>Search</button>
+          </div>
+          <div class="dropdown" v-if="categoryDP">
+            <div
+              v-for="(category, index) in categories"
+              :key="index"
+              class="items"
+            >
+              <p class="item">{{ category }}</p>
+            </div>
           </div>
         </div>
       </div>

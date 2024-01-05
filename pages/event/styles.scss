@@ -26,10 +26,17 @@
 
   .event_details {
     display: flex;
+    flex-direction: row;
+    @media screen and (max-width: 770px) {
+      flex-direction: column;
+    }
 
     .first_section {
       padding: 60px 60px 90px 60px;
       max-width: 875px;
+      @media screen and (max-width: 770px) {
+        padding: 30px;
+      }
 
       .__event_details h3 {
         font-family: "Gilroy-Bold";
@@ -59,6 +66,7 @@
       }
       .__event_ticket {
         margin-bottom: 25px;
+
         .pricing {
           display: flex;
           gap: 40px;
@@ -88,10 +96,17 @@
     }
     .second_section {
       display: flex;
+      flex-direction: column;
       padding: 60px;
+      width: 100%;
+      max-width: 400px;
+
+      @media screen and (max-width: 520px) {
+        padding: 30px;
+        max-width: 250px;
+      }
 
       .contact_organizers {
-        width: 100%;
         .social_media {
           display: flex;
           gap: 10px;
@@ -103,6 +118,10 @@
             height: 32px;
             cursor: pointer;
           }
+        }
+        .map_direction {
+          border-radius: 10px;
+          padding-left: 10px;
         }
       }
     }

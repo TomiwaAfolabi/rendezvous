@@ -5,17 +5,35 @@
   margin: auto;
   background-image: url("../assets/img/hero_img.svg");
   background-repeat: no-repeat, no-repeat;
+
+  @media screen and (max-width: 1245px) {
+    display: flex;
+    justify-content: center;
+  }
   .content {
     height: 200px;
     display: flex;
-    padding-top: 20rem;
+    flex-direction: row;
+    padding: 400px 10px 50px 10px;
     gap: 50px;
+    @media screen and (max-width: 1245px) {
+      padding-top: 15rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 220px;
+    }
+
     h1 {
       max-width: 531px;
       font-size: 32px;
       font-weight: bold;
       color: #ffffff;
       padding-left: 50px;
+      @media screen and (max-width: 1245px) {
+        max-width: 831px;
+      }
     }
 
     .search_input {
@@ -26,8 +44,8 @@
       align-items: flex-end;
       padding-right: 20px;
 
-      @media screen and (max-width: 1117px) {
-        display: none;
+      @media screen and (max-width: 1245px) {
+        padding: 0px 50px 0px 50px;
       }
 
       .input__container {
@@ -36,23 +54,21 @@
         background-color: #ffffff;
         height: 100px;
         border-radius: 20px;
-
         position: relative;
+        overflow: auto;
 
         .field {
+          display: flex;
+          gap: 5px;
+          position: absolute;
+          top: 45px;
+          left: 40px;
           .icon {
-            max-width: 16px;
-            position: absolute;
-            top: 45px;
-            left: 40px;
+            padding-top: 1px;
           }
 
           input {
-            max-width: 150px;
             border-style: none;
-            position: absolute;
-            top: 43px;
-            left: 65px;
             font-size: 16px;
             font-family: "Gilroy-Regular", sans-serif;
           }
@@ -71,61 +87,22 @@
           .menu {
             display: flex;
             gap: 60px;
+
             .icon {
               position: relative;
               top: 17px;
               cursor: pointer;
             }
           }
-
-          .dropdown {
-            max-width: 160px;
-            height: 120px;
-            background-color: #ffffff;
-            overflow: scroll;
-            font-family: "Gilroy-Regular", sans-serif;
-            position: absolute;
-            top: 50px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            .icon {
-              width: 16px;
-              position: absolute;
-              top: 15px;
-              left: 15px;
-            }
-            .items {
-              width: 159px;
-              height: 35px;
-              padding: 0;
-              position: relative;
-              display: block;
-              cursor: pointer;
-
-              &:hover {
-                background-color: #432361;
-              }
-
-              p {
-                color: #4f4f4f;
-                margin: 0;
-                text-align: center;
-                padding: 8px 5px 5px 0px;
-                &:hover {
-                  color: white;
-                }
-              }
-            }
-          }
         }
         .search_btn {
           width: 120px;
           height: 51px;
-          position: absolute;
+          position: relative;
           top: 25px;
-          right: 10px;
+          left: 520px;
+          padding-right: 20px;
+
           button {
             width: 100%;
             max-width: 120px;
@@ -139,6 +116,44 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
+          }
+        }
+        .dropdown {
+          width: 50%;
+          max-width: 157px;
+          height: 120px;
+          background-color: white;
+          overflow: scroll;
+          font-family: "Gilroy-Regular", sans-serif;
+          position: absolute;
+          top: 80px;
+          right: 208px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+
+          .items {
+            height: 35px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #432361;
+            }
+
+            p {
+              color: #4f4f4f;
+              margin: 0;
+              text-align: center;
+
+              &:hover {
+                color: white;
+              }
+            }
           }
         }
       }
@@ -156,13 +171,23 @@
     display: flex;
     justify-content: space-between;
     padding: 40px;
+    @media screen and (max-width: 942px) {
+      display: block;
+      padding-bottom: 0px;
+    }
     h1 {
       font-size: 32px;
       color: #000000;
+      @media screen and (max-width: 336px) {
+        margin: 0;
+      }
     }
     p {
       color: #432361;
       cursor: pointer;
+      @media screen and (max-width: 336px) {
+        margin: 0;
+      }
     }
   }
   .event_card_container {
@@ -170,14 +195,23 @@
     display: flex;
     gap: 20px;
     overflow-y: scroll;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   .card_container_section {
     display: flex;
     padding: 40px;
     gap: 80px;
+    @media screen and (max-width: 1406px) {
+      display: flex;
+      flex-direction: column;
+    }
     .first_section {
       width: 30%;
+      @media screen and (max-width: 1406px) {
+        width: 100%;
+      }
       p {
         max-width: 393px;
         font-size: 32px;
@@ -199,40 +233,13 @@
     }
     .second_section {
       width: 70%;
-
-      .card {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      @media screen and (max-width: 1406px) {
         width: 100%;
-        display: inline-flex;
-        flex-wrap: wrap;
-        gap: 30px;
-
-        div:nth-child(1) {
-          width: 100%;
-          height: 240px;
-          max-width: 420px;
-          border-radius: 10px;
-          background-image: url("../assets/img/online_events_img.svg");
-          background-repeat: no-repeat, no-repeat;
-          cursor: pointer;
-        }
-        div:nth-child(2) {
-          width: 100%;
-          height: 240px;
-          max-width: 420px;
-          border-radius: 10px;
-          background-image: url("../assets/img/physical_events_img.svg");
-          background-repeat: no-repeat, no-repeat;
-          cursor: pointer;
-        }
-        div:nth-child(3) {
-          width: 100%;
-          height: 240px;
-          max-width: 420px;
-          border-radius: 10px;
-          background-image: url("../assets/img/hybrid_events_img.svg");
-          background-repeat: no-repeat, no-repeat;
-          cursor: pointer;
-        }
+        display: flex;
+        justify-content: center;
       }
     }
   }

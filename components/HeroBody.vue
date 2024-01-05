@@ -9,7 +9,7 @@
     </div>
 
     <div class="event_card_container">
-      <EventCard :events="eventsData" />
+      <EventCard :events="data" />
     </div>
     <div class="card_container_section">
       <div class="first_section">
@@ -19,17 +19,7 @@
         </div>
       </div>
       <div class="second_section">
-        <div class="card">
-          <div>
-            <p>Online Events</p>
-          </div>
-          <div>
-            <p>Physical Events</p>
-          </div>
-          <div>
-            <p>Hybrid Events</p>
-          </div>
-        </div>
+        <Card />
       </div>
     </div>
   </div>
@@ -37,27 +27,10 @@
 
 <script setup>
 import EventCard from "./reusables/EventCard.vue";
+import Card from "./reusables/Card.vue";
 import "./styles.scss";
-const eventsData = [
-  {
-    event_title: "ISWIS Live show",
-    event_descprition:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi u  aliquip ex ea commodo consequat.",
-    event_image: "assets/img/ISWIS_event__img.svg",
-  },
-  {
-    event_title: "Nartive 5 Live show",
-    event_descprition:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi u  aliquip ex ea commodo consequat.",
-    event_image: "assets/img/basketmount_img.svg",
-  },
-  {
-    event_title: "BasketMouth Live show",
-    event_descprition:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enimad minim veniam, quis nostrud exercitation ullamco laboris nisi u  aliquip ex ea commodo consequat.",
-    event_image: "assets/img/Nativ5.svg",
-  },
-];
+
+const { data } = await useFetch("/api/events");
 </script>
 
 <style lang="scss" scoped></style>

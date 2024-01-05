@@ -1,15 +1,65 @@
+.card {
+  width: 100%;
+  height: 240px;
+  max-width: 420px;
+  border-radius: 10px;
+  background-repeat: no-repeat, no-repeat;
+  position: relative;
+  cursor: pointer;
+  div {
+    width: 100%;
+    background-color: black;
+    max-width: 420px;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    opacity: 50%;
+    border-radius: 10px;
+
+    p {
+      color: #ffffff;
+    }
+  }
+}
+.card:nth-child(1) {
+  background-image: url("~/assets/img/online_events.svg");
+}
+.card:nth-child(2) {
+  background-image: url("~/assets/img/physical_events.svg");
+}
+.card:nth-child(3) {
+  background-image: url("~/assets/img/hybrid_events.svg");
+}
+
 .event_card {
   max-width: 421px;
   height: 488px;
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
-  overflow: auto;
+
+  img {
+    max-height: 488px;
+    width: 100%;
+    height: 280px;
+    object-fit: contain;
+
+    @media screen and (max-width: 942px) {
+      max-width: 100vw;
+    }
+  }
+  @media screen and (max-width: 942px) {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
 
   .card_content {
     padding: 15px;
-    height: 200px;
-    overflow-y: scroll;
+    height: 160px;
+    overflow: auto;
     h3 {
       font-size: 16px;
       margin: 0px;

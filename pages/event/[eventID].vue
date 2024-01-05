@@ -1,12 +1,12 @@
 <template>
   <div class="events_details_container">
     <div class="event_img">
-      <img src="assets/img/basketmount_img.svg" alt="event-image" />
+      <img :src="data.event.imageUrl" alt="event-image" />
     </div>
     <div class="event_details">
       <div class="first_section">
         <div class="__event_details">
-          <h3>I said what I said Live Show</h3>
+          <h3>{{ data.event.title }}</h3>
           <div>
             <p>
               <Icon
@@ -17,37 +17,19 @@
             </p>
             <p><Icon name="ic:round-access-time" color="#9B51E0"></Icon> 6pm</p>
             <p>
-              <Icon name="ph:map-pin-light" color="#9B51E0"></Icon> Race Course,
-              8/9 Marina, Onikan, Lagos Lagos, 4aa Force Rd, Lagos Island
-              102273, Lagos
+              <Icon name="ph:map-pin-light" color="#9B51E0"></Icon>
+              {{ data.event.address }}
             </p>
-            <p><Icon name="tabler:user" color="#9B51E0"></Icon>FK, Jollz</p>
+            <p>
+              <Icon name="tabler:user" color="#9B51E0"></Icon
+              >{{ data.event.organizer.name }}
+            </p>
           </div>
         </div>
         <div class="__event_description">
           <h4>Event description</h4>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-            officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit
-            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
+            {{ data.event.description }}
           </p>
         </div>
         <div class="__event_ticket">
@@ -55,11 +37,21 @@
           <div class="pricing">
             <p>
               Single<br />
-              <span id="price">NGN 5,000</span>
+              <span id="price"
+                >NGN
+                {{
+                  Number(data.event.price) <= 0 ? "Free" : data.event.price
+                }}</span
+              >
             </p>
             <p>
               Pair<br />
-              <span id="price">NGN 5,000</span>
+              <span id="price"
+                >NGN
+                {{
+                  Number(data.event.price) <= 0 ? "Free" : data.event.price
+                }}</span
+              >
             </p>
           </div>
         </div>
@@ -71,10 +63,28 @@
         <div class="contact_organizers">
           <h3>Contact Organizers</h3>
           <div class="social_media">
-            <img src="~/assets/icons/circle_email_icon.svg" />
-            <Icon name="fa6-brands:square-twitter" color="#783EAD"></Icon>
-            <img src="~/assets/icons/square_instagram_icon.svg" />
+            <a :href="`mailto:${data.event.organizer.email}`"
+              ><img src="~/assets/icons/circle_email_icon.svg"
+            /></a>
+
+            <a :href="data.event.organizer.twitterUrl" target="_blank"
+              ><Icon name="fa6-brands:square-twitter" color="#783EAD"></Icon
+            ></a>
+            <a :href="data.event.organizer.instagram" target="_blank"
+              ><img src="~/assets/icons/square_instagram_icon.svg"
+            /></a>
           </div>
+        </div>
+        <div class="map_direction">
+          <h3>Directions</h3>
+          <GoogleMap
+            :api-key="googleMapKey"
+            style="width: 100%; max-width: 400px; height: 452px"
+            :center="center"
+            :zoom="15"
+          >
+            <Marker :options="markerOptions" />
+          </GoogleMap>
         </div>
       </div>
     </div>
@@ -83,6 +93,29 @@
 
 <script setup>
 import "./styles.scss";
+import { GoogleMap, Marker } from "vue3-google-map";
+const config = useRuntimeConfig();
+const googleMapKey = config.googleMapKey;
+const center = reactive({ lat: 6.5801595, lng: 3.3400268 });
+const markerOptions = { position: center, label: "E" };
+
+useHead(() => ({
+  script: [
+    {
+      src: `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}`,
+    },
+  ],
+}));
+
+const route = useRoute();
+const { data } = await useFetch(`/api/events/${route.params.eventID}`);
+if (data) {
+  center.lat = Number(data.value.event.lat);
+  center.lng = Number(data.value.event.long);
+}
+const date = ref(data.value.event.date);
+let d = new Date(date);
+console.log(d.toString());
 </script>
 
 <style lang="scss" scoped></style>

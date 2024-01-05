@@ -1,7 +1,10 @@
 <template>
   <div class="nav_main_container">
     <header class="nav_container">
-      <img src="~/assets/img/rendevous.svg" alt="logo" />
+      <NuxtLink to="/"
+        ><img src="~/assets/img/rendevous.svg" alt="logo"
+      /></NuxtLink>
+
       <nav>
         <ul v-for="(link, index) in links" :key="index">
           <NuxtLink
