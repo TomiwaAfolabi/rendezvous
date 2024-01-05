@@ -14,26 +14,28 @@
           </div>
           <div class="categories_filter">
             <div class="menu">
-              <p>Categories</p>
+              <p>{{ selectedCategory }}</p>
               <Icon
                 name="material-symbols:keyboard-arrow-down"
                 color="black"
                 @click="toggleCategory()"
               />
             </div>
+            <div class="dropdown" v-if="categoryDP">
+              <div
+                v-for="(category, index) in categories"
+                :key="index"
+                class="items"
+              >
+                <p class="item" @click="selectCategory(category)">
+                  {{ category }}
+                </p>
+              </div>
+            </div>
           </div>
 
           <div class="search_btn">
-            <button>Search</button>
-          </div>
-          <div class="dropdown" v-if="categoryDP">
-            <div
-              v-for="(category, index) in categories"
-              :key="index"
-              class="items"
-            >
-              <p class="item">{{ category }}</p>
-            </div>
+            <button @click="searchCategory(selectedCategory)">Search</button>
           </div>
         </div>
       </div>
@@ -43,11 +45,30 @@
 
 <script setup>
 import "./styles.scss";
+
 const categoryDP = ref(false);
-const categories = reactive(["Music", "Podcast", "Comedy"]);
+const categories = reactive([
+  "All",
+  "Comedy",
+  "Religious",
+  "Tech",
+  "Health",
+  "Fitness",
+  "Sports",
+  "Education",
+]);
+const selectedCategory = ref("All");
 
 const toggleCategory = () => {
   categoryDP.value = !categoryDP.value;
+};
+const selectCategory = (category) => {
+  selectedCategory.value = category;
+  categoryDP.value = false;
+};
+
+const searchCategory = async (category) => {
+  const { data } = await useFetch(`/api/categories/${category}`);
 };
 </script>
 

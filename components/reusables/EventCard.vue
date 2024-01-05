@@ -3,7 +3,15 @@
     <img :src="event.imageUrl" alt="event-image" />
     <div class="card_content">
       <h3>{{ event.title }}</h3>
-      <p>Sun, Oct 3rd <span> </span> 6pm</p>
+      <p>
+        {{ formatDate(event.date) }} <span> </span>
+        {{
+          Number(event.time.slice(0, 2)) % 12 === 0
+            ? "12"
+            : Number(event.time.slice(0, 2)) % 12
+        }}
+        pm
+      </p>
       <p>
         {{ event.description }}
       </p>
@@ -18,6 +26,11 @@
 <script setup>
 import "./styles.scss";
 const { events } = defineProps(["events"]);
+
+const formatDate = (date) => {
+  const d = new Date(date);
+  return d.toDateString();
+};
 </script>
 
 <style lang="scss" scoped></style>

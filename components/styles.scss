@@ -94,6 +94,41 @@
               cursor: pointer;
             }
           }
+          .dropdown {
+            max-width: 180px;
+            height: 80px;
+            background-color: white;
+            overflow: scroll;
+            font-family: "Gilroy-Regular", sans-serif;
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            position: absolute;
+
+            .items {
+              height: 35px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+
+              cursor: pointer;
+
+              &:hover {
+                background-color: #432361;
+              }
+
+              p {
+                color: #4f4f4f;
+                margin: 0;
+                text-align: center;
+                padding: 20px;
+
+                &:hover {
+                  color: white;
+                }
+              }
+            }
+          }
         }
         .search_btn {
           width: 120px;
@@ -116,44 +151,6 @@
             border: none;
             border-radius: 10px;
             cursor: pointer;
-          }
-        }
-        .dropdown {
-          width: 50%;
-          max-width: 157px;
-          height: 120px;
-          background-color: white;
-          overflow: scroll;
-          font-family: "Gilroy-Regular", sans-serif;
-          position: absolute;
-          top: 80px;
-          right: 208px;
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-
-          .items {
-            height: 35px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-            cursor: pointer;
-
-            &:hover {
-              background-color: #432361;
-            }
-
-            p {
-              color: #4f4f4f;
-              margin: 0;
-              text-align: center;
-
-              &:hover {
-                color: white;
-              }
-            }
           }
         }
       }
@@ -194,9 +191,9 @@
     padding: 40px;
     display: flex;
     gap: 20px;
-    overflow-y: scroll;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
   }
 
   .card_container_section {

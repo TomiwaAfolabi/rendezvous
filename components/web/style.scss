@@ -41,10 +41,10 @@
           font-size: 16px;
           &:hover {
             transition: 250ms;
-            background-color: #432361;
+
             padding: 5px 24px 5px 24px;
-            border-radius: 10px;
-            color: #ffffff;
+            border-bottom: 2.5px solid #432361;
+            color: #432361;
             cursor: pointer;
           }
         }

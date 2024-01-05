@@ -17,6 +17,7 @@
     position: absolute;
     opacity: 50%;
     border-radius: 10px;
+    color: #ffffff;
 
     p {
       color: #ffffff;
@@ -39,6 +40,7 @@
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
+  transition: all 250ms;
 
   img {
     max-height: 488px;

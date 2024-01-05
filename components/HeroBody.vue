@@ -11,6 +11,7 @@
     <div class="event_card_container">
       <EventCard :events="data" />
     </div>
+
     <div class="card_container_section">
       <div class="first_section">
         <p>Discover a World of Events Tailored Just for You.</p>

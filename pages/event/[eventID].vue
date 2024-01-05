@@ -13,9 +13,16 @@
                 name="material-symbols-light:calendar-today-outline-sharp"
                 color="#9B51E0"
               ></Icon>
-              Sunday, October 3rd, 2023
+              {{ formatDate(data.event.date) }}
             </p>
-            <p><Icon name="ic:round-access-time" color="#9B51E0"></Icon> 6pm</p>
+            <p>
+              <Icon name="ic:round-access-time" color="#9B51E0"></Icon>
+              {{
+                Number(data.event.time.slice(0, 2)) % 12 === 0
+                  ? "12"
+                  : Number(data.event.time.slice(0, 2)) % 12
+              }}pm
+            </p>
             <p>
               <Icon name="ph:map-pin-light" color="#9B51E0"></Icon>
               {{ data.event.address }}
@@ -78,7 +85,6 @@
         <div class="map_direction">
           <h3>Directions</h3>
           <GoogleMap
-            :api-key="googleMapKey"
             style="width: 100%; max-width: 400px; height: 452px"
             :center="center"
             :zoom="15"
@@ -97,9 +103,18 @@ import { GoogleMap, Marker } from "vue3-google-map";
 const config = useRuntimeConfig();
 const googleMapKey = config.googleMapKey;
 const center = reactive({ lat: 6.5801595, lng: 3.3400268 });
+const pageTitle = ref("");
+const pageDescription = ref("");
 const markerOptions = { position: center, label: "E" };
 
 useHead(() => ({
+  title: `${pageTitle.value}`,
+  meta: [
+    {
+      name: "description",
+      content: `${pageDescription.value}`,
+    },
+  ],
   script: [
     {
       src: `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}`,
@@ -109,13 +124,23 @@ useHead(() => ({
 
 const route = useRoute();
 const { data } = await useFetch(`/api/events/${route.params.eventID}`);
+
 if (data) {
   center.lat = Number(data.value.event.lat);
   center.lng = Number(data.value.event.long);
+  pageTitle.value = data.value.event.title;
+  pageDescription.value = data.value.event.description;
 }
-const date = ref(data.value.event.date);
-let d = new Date(date);
-console.log(d.toString());
+
+const formatDate = (date) => {
+  const d = new Date(date);
+  return d.toLocaleDateString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+};
 </script>
 
 <style lang="scss" scoped></style>
