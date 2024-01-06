@@ -123,7 +123,9 @@ useHead(() => ({
 }));
 
 const route = useRoute();
-const { data } = await useFetch(`/api/events/${route.params.eventID}`);
+const { data } = await useFetch(`/api/events/${route.params.eventID}`).catch(
+  (err) => err
+);
 
 if (data) {
   center.lat = Number(data.value.event.lat);
