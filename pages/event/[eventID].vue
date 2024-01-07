@@ -117,7 +117,7 @@ useHead(() => ({
   ],
   script: [
     {
-      src: `http://maps.googleapis.com/maps/api/js?key=${googleMapKey}&libraries=places&sensor=false`,
+      src: `http://maps.googleapis.com/maps/api/js?key=${googleMapKey}`,
     },
   ],
 }));
