@@ -31,7 +31,9 @@ import EventCard from "./reusables/EventCard.vue";
 import Card from "./reusables/Card.vue";
 import "./styles.scss";
 
-const { data } = await useFetch("/api/events").catch((err) => err);
+const data = await useFetch("/api/events")
+  .then((data) => data.data)
+  .catch((err) => err);
 </script>
 
 <style lang="scss" scoped></style>

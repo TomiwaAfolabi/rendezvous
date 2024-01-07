@@ -117,15 +117,16 @@ useHead(() => ({
   ],
   script: [
     {
-      src: `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}`,
+      src: `http://maps.googleapis.com/maps/api/js?key=${googleMapKey}&libraries=places&sensor=false`,
     },
   ],
 }));
 
 const route = useRoute();
-const { data } = await useFetch(`/api/events/${route.params.eventID}`).catch(
-  (err) => err
-);
+
+const data = await useFetch(`/api/events/${route.params.eventID}`)
+  .then((data) => data.data)
+  .catch((err) => err);
 
 if (data) {
   center.lat = Number(data.value.event.lat);

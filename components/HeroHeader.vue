@@ -68,9 +68,9 @@ const selectCategory = (category) => {
 };
 
 const searchCategory = async (category) => {
-  const { data } = await useFetch(`/api/categories/${category}`).catch(
-    (err) => err
-  );
+  const data = await useFetch(`/api/categories/${category}`)
+    .then((data) => data.data)
+    .catch((err) => err);
 };
 </script>
 
