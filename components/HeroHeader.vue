@@ -13,25 +13,16 @@
             <input type="text" placeholder="Search for an event" />
           </div>
           <div class="categories_filter">
-            <div class="menu">
-              <p>{{ selectedCategory }}</p>
-              <Icon
-                name="material-symbols:keyboard-arrow-down"
-                color="black"
-                @click="toggleCategory()"
-              />
-            </div>
-            <div class="dropdown" v-if="categoryDP">
-              <div
+            <select v-model="selectedCategory" class="menu">
+              <option
                 v-for="(category, index) in categories"
                 :key="index"
-                class="items"
+                :value="`${category}`"
               >
-                <p class="item" @click="selectCategory(category)">
-                  {{ category }}
-                </p>
-              </div>
-            </div>
+                {{ category }}
+              </option>
+              <option value="volvo">Volvo</option>
+            </select>
           </div>
 
           <div class="search_btn">
@@ -59,16 +50,8 @@ const categories = reactive([
 ]);
 const selectedCategory = ref("All");
 
-const toggleCategory = () => {
-  categoryDP.value = !categoryDP.value;
-};
-const selectCategory = (category) => {
-  selectedCategory.value = category;
-  categoryDP.value = false;
-};
-
-const searchCategory = async (category) => {
-  const data = await useFetch(`/api/categories/${category}`)
+const searchCategory = async () => {
+  const data = await useFetch(`/api/categories/${selectedCategory.value}`)
     .then((data) => data.data)
     .catch((err) => err);
 };

@@ -59,29 +59,43 @@
   }
 
   .card_content {
-    padding: 15px;
-    height: 160px;
-    overflow: auto;
-    h3 {
-      font-size: 16px;
-      margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 180px;
+
+    .title {
+      padding: 10px 0px 0px 10px;
+      h3 {
+        font-size: 16px;
+        margin: 0px;
+      }
+      span {
+        height: 4px;
+        width: 4px;
+        background-color: black;
+        border-radius: 50%;
+        display: inline-flex;
+        flex-wrap: wrap;
+        margin: 0px 5px 0px 5px;
+      }
     }
-    span {
-      height: 4px;
-      width: 4px;
-      background-color: black;
-      border-radius: 50%;
-      display: inline-flex;
-      flex-wrap: wrap;
-      margin: 0px 5px 0px 5px;
-    }
-    p {
+    .description {
       font-size: 14px;
-      margin: 5px 0px 25px 0px;
+
+      padding-left: 10px;
+      p {
+        margin: 0;
+      }
     }
+    .button {
+      padding-left: 10px;
+    }
+
     a {
       color: #432361;
       cursor: pointer;
+      padding-left: 2px;
     }
   }
 

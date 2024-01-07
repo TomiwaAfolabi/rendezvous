@@ -6,7 +6,6 @@
 </template>
 
 <script setup>
-import "./style.scss";
 useHead({
   title: "Events",
   meta: [
