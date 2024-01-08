@@ -120,7 +120,7 @@ useHead(() => ({
   ],
   script: [
     {
-      src: `http://maps.google.com/maps/api/js?v=3&key=${config.public.googleMapKey}&callback=initialize"`,
+      src: `https://maps.google.com/maps/api/js?v=3&key=${config.public.googleMapKey}&callback=initialize"`,
     },
   ],
 }));
