@@ -85,7 +85,8 @@
         <div class="map_direction">
           <h3>Directions</h3>
           <GoogleMap
-            style="width: 100%; max-width: 400px; height: 452px"
+            :api-key="config.public.googleMapKey"
+            style="width: 100%; height: 500px"
             :center="center"
             :zoom="15"
           >
@@ -100,11 +101,13 @@
 <script setup>
 import "./styles.scss";
 import { GoogleMap, Marker } from "vue3-google-map";
+
 const config = useRuntimeConfig();
-const googleMapKey = config.googleMapKey;
+
 const center = reactive({ lat: 6.5801595, lng: 3.3400268 });
 const pageTitle = ref("");
 const pageDescription = ref("");
+const map = ref(null);
 const markerOptions = { position: center, label: "E" };
 
 useHead(() => ({
@@ -117,7 +120,7 @@ useHead(() => ({
   ],
   script: [
     {
-      src: `https://maps.googleapis.com/maps/api/js?key=${googleMapKey}&libraries=places&sensor=false`,
+      src: `http://maps.google.com/maps/api/js?v=3&key=${config.public.googleMapKey}&callback=initialize"`,
     },
   ],
 }));
