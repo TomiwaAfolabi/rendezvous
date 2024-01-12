@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-    <div v-else><NuxtLoadingIndicator /></div>
+    <div class="loader" v-else><NuxtLoadingIndicator /></div>
   </div>
 </template>
 
@@ -132,9 +132,8 @@ useHead(() => ({
 }));
 
 const route = useRoute();
-console.log(event.value);
+
 if (event.value) {
-  console.log(event);
   center.lat = Number(event.value.lat);
   center.lng = Number(event.value.long);
   pageTitle.value = event.value.title;
