@@ -26,7 +26,7 @@
           </div>
 
           <div class="search_btn">
-            <button @click="searchCategory(selectedCategory)">Search</button>
+            <button @click="search()">Search</button>
           </div>
         </div>
       </div>
@@ -36,6 +36,10 @@
 
 <script setup>
 import "./styles.scss";
+import { useEventStore } from "../store/events";
+import { storeToRefs } from "pinia";
+const eventStore = useEventStore();
+const { searchCategory, getEvents } = eventStore;
 
 const categoryDP = ref(false);
 const categories = reactive([
@@ -50,10 +54,12 @@ const categories = reactive([
 ]);
 const selectedCategory = ref("All");
 
-const searchCategory = async () => {
-  const data = await useFetch(`/api/categories/${selectedCategory.value}`)
-    .then((data) => data.data)
-    .catch((err) => err);
+const search = () => {
+  if (selectedCategory.value === "All") {
+    getEvents();
+  } else {
+    searchCategory(selectedCategory.value);
+  }
 };
 </script>
 

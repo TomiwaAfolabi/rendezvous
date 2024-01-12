@@ -16,27 +16,27 @@
         <NuxtLink class="btn">Log In</NuxtLink>
         <NuxtLink class="btn">Sign Up</NuxtLink>
       </div>
-
-      <div class="mobile_nav">
-        <div @click="toggleDropdown">
-          <Icon name="material-symbols:menu-rounded" color="#783EAD" />
-        </div>
-        <nav
-          class="mobile_nav_bar"
-          :style="
-            dropdownMenu
-              ? 'display:block; visibility:visible; '
-              : 'display: none;  visibility:hidden;  '
-          "
-        >
-          <ul v-for="(link, index) in mobileLinks" :key="index">
-            <NuxtLink
-              ><li>{{ link }}</li></NuxtLink
-            >
-          </ul>
-        </nav>
+      <div class="icon_cont" @click="toggleDropdown">
+        <Icon name="material-symbols:menu-rounded" color="#783EAD" />
       </div>
     </header>
+
+    <div class="mobile_nav">
+      <nav
+        class="mobile_nav_bar"
+        :style="
+          dropdownMenu
+            ? 'display:block; visibility:visible; '
+            : 'display: none;  visibility:hidden;  '
+        "
+      >
+        <ul v-for="(link, index) in mobileLinks" :key="index">
+          <NuxtLink
+            ><li>{{ link }}</li></NuxtLink
+          >
+        </ul>
+      </nav>
+    </div>
   </div>
 </template>
 

@@ -8,8 +8,11 @@
       </p>
     </div>
 
-    <div class="event_card_container">
-      <EventCard :events="data" />
+    <div v-if="events && events.length > -1" class="event_card_container">
+      <EventCard :events="events" />
+    </div>
+    <div class="loader" v-else>
+      <NuxtLoadingIndicator />
     </div>
 
     <div class="card_container_section">
@@ -27,13 +30,18 @@
 </template>
 
 <script setup>
+import { useEventStore } from "../store/events";
+import { storeToRefs } from "pinia";
 import EventCard from "./reusables/EventCard.vue";
 import Card from "./reusables/Card.vue";
 import "./styles.scss";
 
-const data = await useFetch("/api/events")
-  .then((data) => data.data)
-  .catch((err) => err);
+const eventStore = useEventStore();
+const { getEvents } = eventStore;
+const { events } = storeToRefs(eventStore);
+onMounted(() => {
+  getEvents();
+});
 </script>
 
 <style lang="scss" scoped></style>

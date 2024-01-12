@@ -90,7 +90,8 @@
             top: 40px;
             left: 15px;
             @media screen and (max-width: 480px) {
-              top: 0px;
+              width: 12px;
+              top: 1px;
             }
           }
 
@@ -195,7 +196,12 @@
     overflow-y: scroll;
     justify-content: flex-start;
   }
-
+  .loader {
+    .nuxt-loading-indicator {
+      width: 400px;
+      height: 400px;
+    }
+  }
   .card_container_section {
     display: flex;
     padding: 40px;
