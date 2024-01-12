@@ -16,8 +16,11 @@
   img {
     width: 250px;
     padding-top: 5px;
-    @media screen and (max-width: 350px) {
-      width: 150px;
+    @media screen and (max-width: 450px) {
+      width: 180px;
+    }
+    @media screen and (max-width: 280px) {
+      width: 130px;
     }
   }
 
@@ -131,6 +134,12 @@
         opacity: 100%;
         border-radius: 20px;
         display: none;
+        @media screen and (max-width: 435px) {
+          top: 109px;
+        }
+        @media screen and (max-width: 279px) {
+          top: 95px;
+        }
 
         ul {
           display: flex;
