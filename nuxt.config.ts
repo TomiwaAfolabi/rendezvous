@@ -5,7 +5,6 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
   devtools: { enabled: true },
   runtimeConfig:{
- 
     public:{
       googleMapKey: process.env.NUXT_GOOGLE_MAPS_API_KEY 
     }

@@ -38,8 +38,10 @@ import "./styles.scss";
 const descLength = ref(170);
 function created() {
   window.addEventListener("resize", (e) => {
-    if (e.currentTarget.innerWidth === 300) {
-      descLength.value = 50;
+    if (e.currentTarget.innerWidth <= 380) {
+      descLength.value = 40;
+    } else if (e.currentTarget.innerWidth > 380) {
+      descLength.value = 170;
     }
   });
 }

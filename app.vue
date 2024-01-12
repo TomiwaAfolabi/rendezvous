@@ -6,8 +6,8 @@
   </div>
 </template>
 
-<script>
-export default {};
+<script setup>
+onMounted(() => {});
 </script>
 
 <style lang="scss" scoped>
