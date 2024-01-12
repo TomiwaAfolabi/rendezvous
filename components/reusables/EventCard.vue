@@ -17,7 +17,7 @@
         </div>
         <div class="description">
           <p>
-            {{ formatDesc(event.description, 175) }}
+            {{ formatDesc(event.description, descLength) }}
           </p>
         </div>
 
@@ -35,7 +35,17 @@
 
 <script setup>
 import "./styles.scss";
-
+const descLength = ref(170);
+function created() {
+  window.addEventListener("resize", (e) => {
+    if (e.currentTarget.innerWidth === 300) {
+      descLength.value = 50;
+    }
+  });
+}
+onMounted(() => {
+  created();
+});
 const { events } = defineProps(["events"]);
 
 const formatDate = (date) => {
