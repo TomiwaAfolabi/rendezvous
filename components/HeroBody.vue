@@ -11,9 +11,8 @@
     <div v-if="events && events.length > -1" class="event_card_container">
       <EventCard :events="events" />
     </div>
-    <div class="loader" v-else>
-      <NuxtLoadingIndicator />
-    </div>
+
+    <Spinner v-else />
 
     <div class="card_container_section">
       <div class="first_section">
@@ -33,6 +32,7 @@
 import { useEventStore } from "../store/events";
 import { storeToRefs } from "pinia";
 import EventCard from "./reusables/EventCard.vue";
+import Spinner from "./reusables/Spinner.vue";
 import Card from "./reusables/Card.vue";
 import "./styles.scss";
 

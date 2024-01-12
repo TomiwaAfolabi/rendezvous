@@ -93,12 +93,13 @@
         </div>
       </div>
     </div>
-    <div class="loader" v-else><NuxtLoadingIndicator /></div>
+    <Spinner v-else />
   </div>
 </template>
 
 <script setup>
 import "./styles.scss";
+import Spinner from "../../components/reusables/Spinner.vue";
 import { GoogleMap, Marker } from "vue3-google-map";
 import { useEventStore } from "../store/events";
 import { storeToRefs } from "pinia";
