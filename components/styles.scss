@@ -203,9 +203,9 @@
     padding: 40px;
     display: flex;
     gap: 20px;
-    justify-content: center;
     flex-wrap: wrap;
     overflow-y: scroll;
+    justify-content: flex-start;
   }
 
   .card_container_section {
