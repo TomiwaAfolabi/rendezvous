@@ -90,11 +90,12 @@
             top: 40px;
             left: 15px;
             @media screen and (max-width: 480px) {
-              width: 13px;
-              top: 1px;
+              width: 14px;
+              top: 2px;
             }
             @media screen and (max-width: 230px) {
               width: 12px;
+              left: 20px;
             }
           }
 
@@ -103,7 +104,7 @@
             font-size: 16px;
             font-family: "Gilroy-Regular", sans-serif;
             outline: none;
-            padding-left: 15px;
+            padding: 3px 0px 0px 24px;
             @media screen and (max-width: 230px) {
               font-size: 11px;
             }
@@ -200,12 +201,15 @@
     }
   }
   .event_card_container {
-    padding: 40px;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     overflow-y: scroll;
     justify-content: flex-start;
+    padding: 40px 40px 40px 65px;
+    @media screen and (max-width: 965px) {
+      padding: 30px;
+    }
   }
 
   .card_container_section {

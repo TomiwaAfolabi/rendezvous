@@ -66,15 +66,15 @@
 
     .title {
       padding: 10px 0px 0px 10px;
-      p {
-        @media screen and (max-width: 205px) {
-          margin: 0px;
-        }
-      }
 
       h3 {
         font-size: 16px;
         margin: 0px;
+      }
+      p {
+        @media screen and (max-width: 380px) {
+          margin-bottom: 0px;
+        }
       }
       span {
         height: 4px;
@@ -88,10 +88,9 @@
     }
     .description {
       font-size: 14px;
-
       padding-left: 10px;
       p {
-        @media screen and (max-width: 205px) {
+        @media screen and (max-width: 380px) {
           margin: 0px;
         }
       }
