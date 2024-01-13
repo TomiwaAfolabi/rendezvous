@@ -14,10 +14,10 @@ onMounted(() => {});
 @import url("https://fonts.cdnfonts.com/css/gilroy-bold");
 
 .body {
-  width: auto;
-  max-width: 1440px;
+  width: 100%;
+
   height: 100vh;
-  margin: auto;
+
   font-family: "Gilroy-Bold", sans-serif;
 }
 </style>
