@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-confi
 export default defineNuxtConfig({
-  modules: ['@pinia/nuxt', 'nuxt-icon'],
+  modules: ['@pinia/nuxt', 'nuxt-icon','@nuxt/test-utils/module'],
   
   css: ['~/assets/scss/main.scss'],
   devtools: { enabled: true },

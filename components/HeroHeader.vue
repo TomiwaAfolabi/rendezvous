@@ -10,7 +10,11 @@
         <div class="input__container">
           <div class="field">
             <Icon name="ph:magnifying-glass" color="black" />
-            <input type="text" placeholder="Search for an event" />
+            <input
+              v-model="input"
+              type="text"
+              placeholder="Search for an event"
+            />
           </div>
           <div class="categories_filter">
             <select v-model="selectedCategory" class="menu">
@@ -37,11 +41,9 @@
 <script setup>
 import "./styles.scss";
 import { useEventStore } from "../store/events";
-import { storeToRefs } from "pinia";
 const eventStore = useEventStore();
 const { searchCategory, getEvents } = eventStore;
-
-const categoryDP = ref(false);
+const input = ref("");
 const categories = reactive([
   "All",
   "Comedy",

@@ -1,5 +1,9 @@
 <template>
   <div class="events_details_container">
+    <Head>
+      <Title> {{ event.title }} </Title>
+      <Meta name="description" :content="event.description" />
+    </Head>
     <div v-if="event">
       <div class="event_img">
         <img :src="event.imageUrl" alt="event-image" />
@@ -109,8 +113,6 @@ const { getEventbyID } = eventStore;
 const { event } = storeToRefs(eventStore);
 const config = useRuntimeConfig();
 const center = reactive({ lat: 6.5801595, lng: 3.3400268 });
-const pageTitle = ref("");
-const pageDescription = ref("");
 const markerOptions = { position: center, label: "E" };
 
 onMounted(() => {
@@ -118,13 +120,6 @@ onMounted(() => {
 });
 
 useHead(() => ({
-  title: `${pageTitle.value}`,
-  meta: [
-    {
-      name: "description",
-      content: `${pageDescription.value}`,
-    },
-  ],
   script: [
     {
       src: `https://maps.google.com/maps/api/js?v=3&key=${config.public.googleMapKey}&callback=initialize"`,
@@ -137,8 +132,6 @@ const route = useRoute();
 if (event.value) {
   center.lat = Number(event.value.lat);
   center.lng = Number(event.value.long);
-  pageTitle.value = event.value.title;
-  pageDescription.value = event.value.description;
 }
 
 const formatDate = (date) => {
