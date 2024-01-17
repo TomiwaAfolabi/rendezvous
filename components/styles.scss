@@ -199,12 +199,13 @@
     }
   }
   .event_card_container {
+    padding: 40px 40px 40px 65px;
     display: flex;
     gap: 20px;
+    justify-content: center;
     flex-wrap: wrap;
     overflow-y: scroll;
     justify-content: flex-start;
-    padding: 40px 40px 40px 65px;
     @media screen and (max-width: 965px) {
       padding: 30px;
     }
