@@ -1,10 +1,10 @@
 .hero_container {
   width: 100%;
   height: 640px;
-  max-width: 1440px;
   margin: auto;
   background-image: url("../assets/img/hero_img.svg");
   background-repeat: no-repeat, no-repeat;
+  background-size: cover;
 
   @media screen and (max-width: 1245px) {
     display: flex;
@@ -14,17 +14,19 @@
     height: 245px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 350px 0px 50px 40px;
-    gap: 80px;
+    padding: 350px 10px 50px 10px;
+    gap: 335px;
+
     @media screen and (max-width: 1245px) {
-      padding: 150px 20px 0px 20px;
+      padding: 170px 20px 0px 20px;
       display: flex;
       flex-direction: column;
+      gap: 20px;
     }
     @media screen and (max-width: 350px) {
-      padding: 120px 5px 0px 5px;
+      padding: 150px 5px 0px 5px;
     }
     h1 {
       max-width: 531px;
@@ -43,15 +45,14 @@
     }
 
     .search_input {
-      width: 100%;
       height: 160px;
       display: flex;
-      justify-content: center;
+      justify-content: flex-end;
       align-items: flex-end;
 
       @media screen and (max-width: 1245px) {
         display: flex;
-        justify-content: center;
+        align-items: flex-start;
       }
 
       @media screen and (max-width: 480px) {
